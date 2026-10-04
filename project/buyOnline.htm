@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallstone</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            background: linear-gradient(to right, #6F4E37, #ff69b4);
+        }
+        .container {
+            display: flex;
+            height: 100%;
+            position: relative;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, 
+                #6F4E37 0%, #6F4E37 10px, 
+                transparent 10px, transparent 20px
+            );
+            background-size: 2px 20px;
+            z-index: 10;
+        }
+
+        .container::after {
+            content: '☕';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 11;
+        }
+
+        .left-side {
+            flex: 1;
+            background: url('buyonline.jpg') center/cover no-repeat;
+            position: relative;
+        }
+        .right-side {
+            flex: 1;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 80%;
+            max-width: 300px;
+        }
+        .auth-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        .signin-btn {
+            background-color: #6F4E37;
+            color: white;
+        }
+        .signin-btn:hover {
+            background-color: #5a3f2c;
+        }
+        .signup-btn {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .signup-btn:hover {
+            background-color: #ff4fa7;
+        }
+        .admin-access {
+            margin-top: 20px;
+        }
+        .admin-icon {
+            display: inline-block;
+            color: #6F4E37;
+            transition: color 0.3s ease;
+        }
+        .admin-icon:hover {
+            color: #ff69b4;
+        }
+        .admin-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side"></div>
+        <div class="right-side">
+            <div class="button-container">
+                <a href="login.htm" class="auth-btn signin-btn">Sign In</a>
+                <a href="register.htm" class="auth-btn signup-btn">Sign Up</a>
+            </div>
+            <div class="admin-access">
+                <a href="mlogin.htm" class="admin-icon" title="Admin Access">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+                      <circle cx="9" cy="10" r="3"/>
+                      <path d="M15 8h4"/>
+                      <path d="M15 12h2"/>
+                      <path d="M6 15h12"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="contact-info">
+                <p>The best of the town</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

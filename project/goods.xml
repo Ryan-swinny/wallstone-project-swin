@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<goods>
+    <item>
+        <item_number>I001</item_number>
+        <name>Flat White</name>
+        <price>4.50</price>
+        <quantity_available>100</quantity_available>
+        <quantity_on_hold>0</quantity_on_hold>
+        <quantity_sold>0</quantity_sold>
+        <description>A Melbourne classic: espresso with steamed milk and a thin layer of microfoam.</description>
+    </item>
+    <item>
+        <item_number>I002</item_number>
+        <name>Avocado Toast</name>
+        <price>12.00</price>
+        <quantity_available>50</quantity_available>
+        <quantity_on_hold>0</quantity_on_hold>
+        <quantity_sold>0</quantity_sold>
+        <description>Smashed avocado on sourdough toast with feta and cherry tomatoes.</description>
+    </item>
+    <item>
+        <item_number>I003</item_number>
+        <name>Melbourne Blend Coffee Beans</name>
+        <price>15.00</price>
+        <quantity_available>75</quantity_available>
+        <quantity_on_hold>0</quantity_on_hold>
+        <quantity_sold>0</quantity_sold>
+        <description>250g bag of our signature Melbourne blend, perfect for home brewing.</description>
+    </item>
+    <item>
+        <item_number>I004</item_number>
+        <name>Cappuccino</name>
+        <price>4.80</price>
+        <quantity_available>100</quantity_available>
+        <quantity_on_hold>0</quantity_on_hold>
+        <quantity_sold>0</quantity_sold>
+        <description>Espresso topped with steamed milk and a generous layer of foam.</description>
+    </item>
+    <item>
+        <item_number>I005</item_number>
+        <name>Breakfast Bundle</name>
+        <price>20.00</price>
+        <quantity_available>30</quantity_available>
+        <quantity_on_hold>0</quantity_on_hold>
+        <quantity_sold>0</quantity_sold>
+        <description>Any coffee of your choice with our signature Big Brekkie plate.</description>
+    </item>
+</goods>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - wallstone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #managerLinks {
+            margin-top: 20px;
+        }
+        #managerLinks a {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Admin - Wallstone</h1>
+        <form id="loginForm">
+            <input type="text" id="managerId" placeholder="ID" required>
+            <input type="password" id="password" placeholder="password" required>
+            <button type="submit">Log in</button>
+        </form>
+        <p id="errorMessage" style="color: red;"></p>
+        <p id="welcomeMessage" style="display: none;"></p>
+        <div id="managerLinks" style="display: none;">
+            <a href="listing.htm">List</a>
+            <a href="processing.htm">Process</a>
+        </div>
+    </div>
+    
+    <script>
+        function checkLoginStatus() {
+            fetch('manager_auth.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        document.getElementById('welcomeMessage').textContent = 'Welcome back! Please log in to continue.';
+                        document.getElementById('welcomeMessage').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                });
+        }
+
+        function showLoggedInState(managerId) {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('managerLinks').style.display = 'block';
+            document.getElementById('welcomeMessage').style.display = 'block';
+            document.getElementById('welcomeMessage').textContent = 'Welcome back! (' + managerId + ')';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const managerId = document.getElementById('managerId').value;
+            const password = document.getElementById('password').value;
+
+            fetch('manager_auth.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'managerId=' + encodeURIComponent(managerId) + '&password=' + encodeURIComponent(password)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showLoggedInState(managerId);
+                    sessionStorage.setItem('managerId', managerId);
+                } else {
+                    document.getElementById('errorMessage').textContent = data.message || 'Login failed, please try again.';
+                    document.getElementById('managerLinks').style.display = 'none';
+                    document.getElementById('welcomeMessage').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').textContent = 'An error occurred during login. Please try again later.';
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+</body>
+</html>

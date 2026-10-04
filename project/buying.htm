@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallstone</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="buying.js"></script>
+    <script src="user-display.js"></script>
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f7f7f7;
+        }
+
+        h1, h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            font-weight: 400;
+            color: #666;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Button styles */
+        button, .button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #4a4a4a;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover, .button:hover {
+            background-color: #333;
+        }
+
+        #confirmPurchase {
+            background-color: #4CAF50;
+        }
+
+        #confirmPurchase:hover {
+            background-color: #45a049;
+        }
+
+        #cancelPurchase {
+            background-color: #f44336;
+            margin-left: 10px;
+        }
+
+        #cancelPurchase:hover {
+            background-color: #da190b;
+        }
+
+        /* User display and logout */
+        #userNameDisplay {
+            margin-bottom: 20px;
+            font-weight: 300;
+            color: #666;
+        }
+
+        #logout {
+            display: inline-block;
+            margin-top: 20px;
+            color: #4a4a4a;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        #logout:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            table, tr, td {
+                display: block;
+            }
+            
+            tr {
+                margin-bottom: 15px;
+                border-bottom: 2px solid #ddd;
+            }
+            
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+            }
+            
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+                color: #666;
+            }
+
+            th {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>This week at wallstone</h1>
+    <div id="userNameDisplay"></div>
+    <table id="catalog">
+        <thead>
+            <tr>
+                <th>Item Number</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity Available</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Shopping Cart</h2>
+    <table id="cart">
+        <thead>
+            <tr>
+                <th>Item Number</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <button id="confirmPurchase">Confirm Purchase</button>
+    <button id="cancelPurchase">Cancel Purchase</button>
+
+    <a href="user_logout.htm" id="logout">Log out</a>
+</body>
+
+</html>

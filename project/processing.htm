@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Wallstone</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="processing.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            color: #1E90FF;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order activity</h1>
+    <table id="processingTable">
+        <thead>
+            <tr>
+                <th>Items ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Reserve</th>
+                <th>Sold</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <button id="processOrdersBtn">Process</button>
+    <a href="logout.htm" id="logoutLink">Logout</a>
+
+    <script>
+        $(document).ready(function() {
+            loadProcessingItems();
+
+            $('#processOrdersBtn').click(function() {
+                processOrders();
+            });
+
+            $('#logoutLink').click(function(e) {
+                e.preventDefault();
+                logout();
+            });
+        });
+    </script>
+</body>
+</html>

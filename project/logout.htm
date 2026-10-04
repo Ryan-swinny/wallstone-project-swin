@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout - Wallstone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f1ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .logout-message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-message">
+        <h1>Thank you for using our service</h1>
+        <p>You have successfully logged out of the system.</p>
+        <p id="managerIdMessage"></p>
+        <p><a href="mlogin.htm">Return to login page</a></p>
+    </div>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'logout.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = JSON.parse(xhr.responseText);
+                if (data.success && data.loggedOutId) {
+                    document.getElementById('managerIdMessage').textContent = 'Logged out Manager ID: ' + data.loggedOutId;
+                }
+            }
+        };
+        xhr.send();
+
+        setTimeout(function() {
+            window.location.href = 'mlogin.htm';
+        }, 5000);  // 延長到 5 秒，給用戶更多時間看到信息
+    </script>
+</body>
+</html>

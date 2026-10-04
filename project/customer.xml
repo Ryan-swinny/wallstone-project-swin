@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+    <customer>
+        <customer_id>C001</customer_id>
+        <first_name>John</first_name>
+        <surname>Smith</surname>
+        <email>john.smith@example.com</email>
+        <password>melbournecoffee123</password>
+        <phone>0412345678</phone>
+    </customer>
+    <customer>
+        <customer_id>C002</customer_id>
+        <first_name>Emma</first_name>
+        <surname>Wilson</surname>
+        <email>emma.wilson@example.com</email>
+        <password>latteLover456</password>
+        <phone>0423456789</phone>
+    </customer>
+    <customer>
+        <customer_id>C003</customer_id>
+        <first_name>Michael</first_name>
+        <surname>Brown</surname>
+        <email>michael.brown@example.com</email>
+        <password>espressoFan789</password>
+        <phone>0434567890</phone>
+    </customer>
+</customers>
